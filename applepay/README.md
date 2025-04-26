@@ -48,7 +48,7 @@ func main() {
     paymentHeader := "paymentHeader"              // PKPaymentToken.header
     ephemeralPublicKey := "ephemeralPublicKey"    // PKPaymentToken.header.ephemeralPublicKey
     transactionId := "transaction123"             // PKPaymentToken.header.transactionId
-    version := "Ec_v1" //PK.PaymentToken.version
+    version := "Ec_v1"                            //PK.PaymentToken.version
 
     // Decrypt the token following Apple's cryptography specification
     result, err := decryptor.Decrypt(
