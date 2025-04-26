@@ -23,3 +23,19 @@ go.work.sum
 
 # env file
 .env
+
+# Local configuration files
+*.local
+
+# Certificates
+*.crt
+*.key
+*.pem
+
+# Go not usable files
+main.go
+
+*apple.go
+*google.go
+
+*notused/
