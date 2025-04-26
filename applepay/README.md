@@ -1,6 +1,6 @@
-# Apple Pay Module
+# ApplePay Module
 
-A Go module for decrypting Apple Pay tokens using merchant private keys and certificates, implementing Apple's Payment Token format specification.
+A Go module for decrypting ApplePay tokens using merchant private keys and certificates, implementing Apple's Payment Token format specification.
 
 ## 📚 Official References
 - [Apple Payment Token Format Reference](https://developer.apple.com/documentation/passkit/payment-token-format-reference)
@@ -11,7 +11,7 @@ A Go module for decrypting Apple Pay tokens using merchant private keys and cert
 
 ### Prerequisites
 - Private key in PKCS#8 format (as specified in Apple's cryptography requirements)
-- Merchant certificate in X.509 format from Apple Pay Merchant ID
+- Merchant certificate in X.509 format from ApplePay Merchant ID
 - Apple Pay payment token data following [Payment Token format](https://developer.apple.com/documentation/passkit/payment-token-format-reference)
 
 ### Basic Implementation
@@ -48,6 +48,7 @@ func main() {
     paymentHeader := "paymentHeader"              // PKPaymentToken.header
     ephemeralPublicKey := "ephemeralPublicKey"    // PKPaymentToken.header.ephemeralPublicKey
     transactionId := "transaction123"             // PKPaymentToken.header.transactionId
+    version := "Ec_v1" //PK.PaymentToken.version
 
     // Decrypt the token following Apple's cryptography specification
     result, err := decryptor.Decrypt(
@@ -70,14 +71,15 @@ func main() {
 Required Parameters
 All parameters follow Apple's Payment Token format specification:
 
-| Parameter           | Apple Pay Equivalent             | Description                                                        |
+| Parameter           | ApplePay Equivalent             | Description                                                        |
 |---------------------|----------------------------------|--------------------------------------------------------------------|
 | ```privateKey```          | Merchant Private Key             | PKCS#8 formatted key as specified in Cryptographic Details         |
 | ```certificate```         | Merchant Certificate             | X.509 certificate from Apple Pay Merchant ID                          |
-| ```paymentData```         | PKPaymentToken.paymentData       | Base64-encoded encrypted payment data containing sensitive payment information |
+| ```paymentData```         | PKPaymentToken.data       | Base64-encoded encrypted payment data containing sensitive payment information |
 | ```paymentHeader```       | PKPaymentToken.header            | Contains metadata needed for decryption                            |
 | ```ephemeralPublicKey```  | header.ephemeralPublicKey        | Elliptic curve public key used for ECIES (Ephemeral)               |
 | ```transactionId```       | header.transactionId             | Unique identifier for the payment transaction                      |
+| ```version```             | PKPaymentToken.version        | Version information about the payment tokenThe token uses EC_v1 for ECC-encrypted data and RSA_v1 for RSA-encrypted data. At moment the project work only with ```ECC_v1```| 
 
 ### 🚨 Error Handling
 
@@ -97,7 +99,7 @@ As specified in Apple's documentation:
 
 Key Management:
 
-Private keys must be stored securely (HSM recommended)
+Private keys must be stored securely (HSM recommended or using Amazon's KMS, something like that)
 
 Rotate keys periodically as per Apple's guidelines
 
