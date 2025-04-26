@@ -21,7 +21,7 @@ This project was born from the challenges faced while implementing Apple Pay tok
 ## 📦 Installation
 
 ```bash 
-go get github.com/yourusername/decrypt-tokens
+go get github.com/megazordcarioca/decrypt-tokens
 ```
 For detailed module-specific documentation, see:
 
