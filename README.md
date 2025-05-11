@@ -10,7 +10,7 @@ This Go library provides tools to decrypt tokens from virtual wallet payment sys
 
 ### Motivation
 
-This project was born from the challenges faced while implementing Apple Pay token decryption in a professional environment. Existing JOSE libraries were outdated and incompatible with Apple's strict NIST SP 800-56A standard requirements. This implementation aims to simplify the process for developers working with payment token decryption in Go.
+This project arose from the challenges faced in implementing Apple Pay token decryption in a professional environment. This implementation aims to simplify the process for developers working on payment token decryption in Go.
 
 ## 🚀 Features
 
