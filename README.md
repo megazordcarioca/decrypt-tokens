@@ -43,9 +43,13 @@ For detailed module-specific documentation, see:
 
 * We welcome contributions! Please feel free to:
 
+* Use in projects
+
 * Open issues for feature requests/bugs
 
 * Fork the repository
+
+* Give suggestions
 
 * Submit PRs with improvements
 
