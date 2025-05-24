@@ -38,4 +38,6 @@ main.go
 *apple.go
 *google.go
 
+.idea/
+
 *notused/
